@@ -176,6 +176,57 @@ body { font-family: 'Space Grotesk', sans-serif; background: var(--black); color
 /* UTILS */
 .mt-40 { margin-top: 40px; }
 .mt-24 { margin-top: 24px; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 768px) {
+  /* Cover */
+  .cover { padding: 32px 24px; }
+  .cover-top { flex-direction: column; gap: 16px; align-items: flex-start; }
+  .cover-badge { font-size: 8px; padding: 5px 10px; }
+  .cover h1 { font-size: clamp(40px, 13vw, 72px); margin-bottom: 24px; }
+  .cover-meta { gap: 20px; padding-top: 24px; }
+  .cover::after { font-size: 300px; right: -40px; bottom: -80px; }
+
+  /* Banner */
+  .intro-banner { padding: 24px; flex-direction: column; gap: 12px; }
+
+  /* Sections */
+  .section { padding: 48px 24px; }
+  .section h2 { font-size: clamp(22px, 7vw, 32px); }
+  .section > .desc { margin-bottom: 32px; }
+
+  /* Colors grid — 2 cols on mobile */
+  .colors-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .color-swatch { height: 60px; }
+
+  /* Type grid — 1 col */
+  .type-grid { grid-template-columns: 1fr; }
+
+  /* Do/Dont — stack */
+  .do-dont { grid-template-columns: 1fr; }
+
+  /* Tone row — 1 col */
+  .tone-row { grid-template-columns: 1fr; }
+
+  /* Content types — 1 col */
+  .content-types { grid-template-columns: 1fr; }
+
+  /* Checklist — 1 col */
+  .checklist-grid { grid-template-columns: 1fr; }
+
+  /* Post cards — stack thumb above content */
+  .post-card { grid-template-columns: 1fr; }
+  .post-thumb { min-height: 200px; }
+  .post-content { padding: 20px 20px; }
+  .post-meta { gap: 12px; }
+
+  /* Footer */
+  .footer { padding: 28px 24px; flex-direction: column; gap: 12px; align-items: flex-start; }
+
+  /* Story placeholder */
+  .story-placeholder { padding: 48px 24px; }
+  .story-placeholder h3 { font-size: 20px; }
+}
 </style>
 </head>
 <body>
