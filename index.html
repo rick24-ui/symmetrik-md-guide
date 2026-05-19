@@ -165,7 +165,12 @@ body { font-family: 'RedHatMono', 'Space Grotesk', sans-serif; background: var(-
 }
 .post-card:hover { border-color: rgba(204,56,13,0.5); }
 .post-thumb { position: relative; overflow: hidden; background: #000; min-height: 260px; }
-.post-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.88; }
+.post-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.88; cursor: zoom-in; }
+#lb-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; }
+#lb-overlay.open { display:flex; }
+#lb-img { max-width:92vw; max-height:92vh; object-fit:contain; box-shadow:0 0 60px rgba(0,0,0,0.8); }
+#lb-close { position:fixed; top:20px; right:28px; color:#fff; font-size:32px; line-height:1; cursor:pointer; font-family:monospace; opacity:0.7; user-select:none; }
+#lb-close:hover { opacity:1; }
 .post-thumb-label {
   position: absolute; top: 10px; left: 10px; background: var(--red);
   font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px;
@@ -785,5 +790,29 @@ body { font-family: 'RedHatMono', 'Space Grotesk', sans-serif; background: var(-
   <div class="right">Emily's Content Guide · v01 · <span>May 2026</span></div>
 </div>
 
+<div id="lb-overlay" role="dialog" aria-modal="true">
+  <span id="lb-close" aria-label="Close">&times;</span>
+  <img id="lb-img" src="" alt="">
+</div>
+
+<script>
+(function(){
+  var overlay = document.getElementById('lb-overlay');
+  var lbImg   = document.getElementById('lb-img');
+
+  document.querySelectorAll('.post-thumb img').forEach(function(img){
+    img.addEventListener('click', function(){
+      lbImg.src = img.src;
+      overlay.classList.add('open');
+    });
+  });
+
+  function close(){ overlay.classList.remove('open'); lbImg.src = ''; }
+
+  overlay.addEventListener('click', function(e){ if(e.target !== lbImg) close(); });
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
 </body>
 </html>
